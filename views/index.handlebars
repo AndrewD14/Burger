@@ -1,0 +1,44 @@
+<div class="row">
+    <div class="col">
+        <ul>
+            {{#each burgers}}
+                {{#unless this.devoured}}
+                <li class="justify-content-end">
+                    <div class="row justify-content-end">
+                        <form action="/{{this.id}}?_method=PUT" method="POST">
+                            <input type="text" value="{{this.id}}. {{this.burger_name}}" readonly>
+                            <button class="btn btn-secondary" type="submit">Devour It!</button>
+                        </form>
+                    </div>
+                </li>
+                {{/unless}}
+            {{/each}}
+        </ul>
+    </div>
+    <div class="col">
+        <ul>
+        {{#each burgers}}
+            {{#if this.devoured}}
+            <li>
+                <form>
+                    <input type="text" value="{{this.id}}. {{this.burger_name}}" disabled>
+                </form>
+            </li>
+            {{/if}}
+        {{/each}}
+        </ul>
+    </div>
+</div>
+<form action="/" method="POST">
+    <div class="row justify-content-center">
+        <div class="form-group">
+            <textarea maxlength="255" rows="4" cols="63" name="name"></textarea>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <button class="btn btn-primary" type="submit">Create Burger!</button>
+    </div>
+    <div class="row justify-content-center">
+        <lable>Type in the burger you want to eat and click <em>Create Burger!</em></lable>
+    </div>
+</form>
