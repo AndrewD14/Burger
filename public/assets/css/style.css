@@ -1,0 +1,19 @@
+body {
+    background-color: #ffd699;
+}
+
+h2 {
+    text-align: center;
+    color: #cc3300;
+}
+
+img {
+    width: 256px;
+    height: 256px;
+    display: block;
+}
+
+li {
+    list-style: none;
+    margin-bottom: 5px;
+}
