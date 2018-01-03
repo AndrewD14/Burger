@@ -2,9 +2,9 @@
 var mysql = require('mysql');
 
 var connection = mysql.createConnection({
-    host     : 'mysql://bc1b5f16727246:ded30105@us-cdbr-iron-east-05.cleardb.net/heroku_3d6bd26e6ff3156?reconnect=true',
-    user     : 'burger_user',
-    password : 'burgers',
+    host     : 'us-cdbr-iron-east-05.cleardb.net',
+    user     : 'bc1b5f16727246',
+    password : 'ded30105',
     database : 'burgers_db'
   });
 
