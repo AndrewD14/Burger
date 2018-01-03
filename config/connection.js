@@ -5,7 +5,7 @@ var connection = mysql.createConnection({
     host     : 'us-cdbr-iron-east-05.cleardb.net',
     user     : 'bc1b5f16727246',
     password : 'ded30105',
-    database : 'burgers_db'
+    database : 'heroku_3d6bd26e6ff3156'
   });
 
 // Make connection.
