@@ -2,7 +2,7 @@
 var mysql = require('mysql');
 
 var connection = mysql.createConnection({
-    host     : 'localhost',
+    host     : 'mysql://bc1b5f16727246:ded30105@us-cdbr-iron-east-05.cleardb.net/heroku_3d6bd26e6ff3156?reconnect=true',
     user     : 'burger_user',
     password : 'burgers',
     database : 'burgers_db'
