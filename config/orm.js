@@ -2,35 +2,35 @@
 var pool = require('./connection.js');
 
 var orm = {
-    selectAll:function(table, func){
-        var connection = pool.getConnection();
+    selectAll:function(table, func){        
+        pool.getConnection().then(function(connection){
+            connection.query("SELECT * FROM ??", table, function(error, data){
+                if(error) throw error;
 
-        connection.query("SELECT * FROM ??", table, function(error, data){
-            if(error) throw error;
+                func(data);
 
-            func(data);
-
-            pool.closeConnection(connection);
+                pool.closeConnection(connection);
+            });
         });
     },
     insertOne: function(table, cols, values, func){
-        var connection = pool.getConnection();
+        pool.getConnection().then(function(connection){
+            connection.query("INSERT INTO ?? (??) VALUES (?)", [table, cols, values], function(error, data){
+                if(error) throw error;
 
-        connection.query("INSERT INTO ?? (??) VALUES (?)", [table, cols, values], function(error, data){
-            if(error) throw error;
-
-            func(data);
-            pool.closeConnection(connection);
+                func(data);
+                pool.closeConnection(connection);
+            });
         });
     },
     updateOne: function(table, values, id, func){
-        var connection = pool.getConnection();
+        pool.getConnection().then(function(connection){
+            connection.query("UPDATE ?? SET ? WHERE id = ?", [table, values, id], function(error, data){
+                if(error) throw error;
 
-        connection.query("UPDATE ?? SET ? WHERE id = ?", [table, values, id], function(error, data){
-            if(error) throw error;
-
-            func(data);
-            pool.closeConnection(connection);
+                func(data);
+                pool.closeConnection(connection);
+            });
         });
     }
 }

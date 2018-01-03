@@ -11,12 +11,14 @@ var pool = mysql.createPool({
 
 // Make connection.
 var getConnection = function(){
-  pool.getConnection(function(error, connection){
-    if(error){
-      console.error("error connecting: " + error);
-      return;
-    }
-    return connection;
+  return new Promise(function(resolve, reject){
+    pool.getConnection(function(error, connection){
+      if(error){
+        console.error("error connecting: " + error);
+        return reject();
+      }
+      return resolve(connection);
+    });
   });
 }
 
